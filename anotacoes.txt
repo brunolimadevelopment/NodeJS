@@ -1,0 +1,143 @@
+1º Inicia o package.json
+    - npm init -y 
+
+2º Instala o express
+    - npm install express
+
+// express é um micro framework, ajuda a lidar com rotas e views
+
+
+3º Configurando o servidor
+    - cria um arquivo server.js
+
+    configura o express
+
+    const express = require('express');
+    const app = express();
+
+    app.listen(3001);
+
+    execute: node server.js  no terminal para executar o servidor.
+    abra o browser localhost:3001
+
+
+4º Instalando o Nodemon
+    - npm install -D nodemon 
+
+    As "devDependencies" são apenas as dependencias de ambente de desenvolvimento  
+    não subimos elas para a aplicação online   
+
+    "devDependencies": {
+        "nodemon": "^2.0.4"
+    }
+
+    toda vez que salvarmos o arquivo server.js, o nodemon observará as mudanças
+
+5º Executando nodemon
+
+    Cria um script no package.json chamado: "dev": "nodemon server.js"
+
+    executa no terminal o comando: npm run dev
+
+6º Instalando e config. o docker
+
+    não funcionou conforme esperado
+
+7º Configurando o mongodb no docker cli
+
+    não funcionou conforme esperado
+
+8º Instalando o https://robomongo.org/ que é uma interface para ver os bancos e as tabelas do mongodb
+
+    não dei continuidade
+
+
+9º Instalando o moogose
+
+    npm install moogose
+
+    moogose - é um ORM de banco não relacionais com o mongodb
+
+    ORM - encapsula a logica das operações do banco de dados atraves do codigo.
+
+    Ao inves de utilizar as querys, utiliza-se codigo js para fazer INSERT, UPDATE, DELETE e etc;
+
+    Baixe o MongoDB Community Server no link https://www.mongodb.com/try/download/community
+
+    next,next,next,next
+
+    apos instalado precisamos configurar a linha de comando.
+
+    acesse o caminho: 
+
+    C:\Program Files\MongoDB\Server\4.4\bin
+
+    agora precisamos registra no path do windows
+
+    - O path do windows é um utilitario que link executaveis ao cmd.
+
+    1º digite meu computador em seguida clique com o direito e na opção propriedades > configurações avançadas do sistema > variaveis de ambiente
+    em variaveis de usuario para DELL selecione path depois em editar. em seguida clique em novo e cole o diretorio do executavel:
+
+        C:\Program Files\MongoDB\Server\4.4\bin
+
+    pronto agora podemos executar o programa via terminal.
+
+
+    agora dentro de C:\ crie uma pasta chamada data/db, nela é onde o MongoDB irá registra todos os registros
+
+    execute: mongod para rodar o server do mongodb, deixe sempre um terminal rodando o server do mongodb
+
+    e execute mongo para rodar o mongodb    
+     
+
+
+
+    OBS: O MongoDB Compass serve para criar os bancos de forma visual sem precisar utilizar a linha de comando, igual o phpmyadmin.
+
+
+    npm install require-dir - serve para inserir o diretorio no lugar de require()
+
+    comandos do mongo cli
+
+    Executa o mongo:
+    
+        mongo
+
+    Exibe as bases de dados:
+
+        show databases
+
+    Executa a base x:
+
+        use nome_do_banco
+    
+    Exibe as "tabelas" COLLECTIONS:
+
+        show collections
+
+    Exibe os registros das collections:
+
+        db.nome_da_collection.find()
+
+
+    // Inserir paginação
+        npm install mongoose-paginate
+    
+    No insominia é retornado o json com a propriedade "docs" onde fica os documentos/objetos json do mongoose 
+    e no final retorna "total", "limit", "page", "pages"
+
+    no metodo index() do controller.js substitua o find() pelo paginate({}, { page: 1, limit: 10})
+
+    Usa-se:
+
+        req.body   -> para o corpo da requisição
+        req.params -> para os ID's definidos nas rotas
+        req.query  -> para parâmetros GET exemplo: {{ base_url }}/products/?page=2
+
+
+    Permitindo que outros endereços acessem a API
+
+        npm install cors
+
+
